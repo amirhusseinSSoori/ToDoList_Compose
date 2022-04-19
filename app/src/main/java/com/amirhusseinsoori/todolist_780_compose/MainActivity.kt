@@ -13,10 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -24,28 +21,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.amirhusseinsoori.todolist_780_compose.ui.ToDoViewModel
+import com.amirhusseinsoori.todolist_780_compose.ui.data.db.model.ToDoEntity
 import com.amirhusseinsoori.todolist_780_compose.ui.theme.ToDoList_780_ComposeTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 var id: Int = 0
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
     @SuppressLint("UnrememberedMutableState")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val notesList = remember {
-                mutableStateListOf<NotesItem>(
-                )
-            }
+            val viewModel: ToDoViewModel = hiltViewModel()
             ToDoList_780_ComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
-                    MainScreen(notesList)
+                    MainScreen(viewModel)
                 }
             }
         }
@@ -56,21 +53,26 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun MainScreen(notesList: MutableList<NotesItem>) {
+fun MainScreen(viewModel: ToDoViewModel) {
+    val list=viewModel.stateFlow.collectAsState()
     Column {
         Button(
             onClick = {
-                notesList.add(NotesItem(id++, "ali"))
+
+                viewModel.insertTodoList(toDoEntity = ToDoEntity(title = "SDFdsf",Description = "Asdasdasdasd"))
             },
             modifier = Modifier
         ) {
             Text(text = "ADD")
         }
         LazyColumn {
-            items(notesList, { notesList: NotesItem -> notesList.id }) { item ->
+            items(list.value, { todo: ToDoEntity -> todo.id!! }) { item ->
                 val dismissState = rememberDismissState()
                 if (dismissState.isDismissed(DismissDirection.EndToStart)) {
-                    notesList.remove(item)
+
+
+
+                    viewModel.deleteTodoList(item)
                 }
                 SwipeToDismiss(
                     state = dismissState,
@@ -110,7 +112,7 @@ fun MainScreen(notesList: MutableList<NotesItem>) {
                         }
                     },
                     dismissContent = {
-                        TodoItemList(item = item.title)
+                        TodoItemList(item = item)
                     }
                 )
                 Divider(Modifier.fillMaxWidth(), Color.DarkGray)
@@ -121,7 +123,7 @@ fun MainScreen(notesList: MutableList<NotesItem>) {
 
 
 @Composable
-fun TodoItemList(item: String) {
+fun TodoItemList(item: ToDoEntity) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -133,7 +135,7 @@ fun TodoItemList(item: String) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(5.dp),
-                text = "title : ".plus(item),
+                text = "title : ".plus(item.title),
                 textAlign = TextAlign.Start
             )
             Text(
@@ -151,7 +153,6 @@ fun TodoItemList(item: String) {
             )
         }
     }
-
 }
 
 data class NotesItem(var id: Int, var title: String)
