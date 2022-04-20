@@ -1,9 +1,6 @@
 package com.amirhusseinsoori.data.db.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.amirhusseinsoori.data.db.model.ToDoEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -18,7 +15,7 @@ interface ToDoDao {
     suspend fun delete(toDoEntity: ToDoEntity)
 
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTodo(toDoEntity: ToDoEntity)
 
 }

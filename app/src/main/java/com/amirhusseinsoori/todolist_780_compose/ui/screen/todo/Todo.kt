@@ -1,9 +1,11 @@
 package com.amirhusseinsoori.todolist_780_compose.ui.screen.todo
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,23 +22,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.amirhusseinsoori.data.db.model.ToDoEntity
+import com.amirhusseinsoori.domain.entity.TodoModel
 import com.amirhusseinsoori.todolist_780_compose.ui.ToDoViewModel
+import com.amirhusseinsoori.todolist_780_compose.ui.navigation.ScreenRoute
 
+var a=1
 
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun TodoScreen(viewModel: ToDoViewModel) {
+fun TodoScreen(navController: NavController, viewModel: ToDoViewModel) {
     val list = viewModel.stateFlow.collectAsState()
+
     Column {
         Button(
             onClick = {
+                //navController.navigate(ScreenRoute.AddDetails.route)
 
                 viewModel.insertTodoList(
-                    toDoEntity = ToDoEntity(
-                        title = "SDFdsf",
-                        Description = "Asdasdasdasd"
+                    todoModel = TodoModel(
+                        title="sdfsdfsdf",
+                        description = "Asd,asdasdasd"
                     )
                 )
             },
@@ -45,11 +53,9 @@ fun TodoScreen(viewModel: ToDoViewModel) {
             Text(text = "ADD")
         }
         LazyColumn {
-            items(list.value, { todo: ToDoEntity -> todo.id!! }) { item ->
+            items(list.value, { todo: TodoModel -> todo.id!! }) { item ->
                 val dismissState = rememberDismissState()
                 if (dismissState.isDismissed(DismissDirection.EndToStart)) {
-
-
                     viewModel.deleteTodoList(item)
                 }
                 SwipeToDismiss(
@@ -101,7 +107,7 @@ fun TodoScreen(viewModel: ToDoViewModel) {
 
 
 @Composable
-fun TodoItemList(item: ToDoEntity) {
+fun TodoItemList(item: TodoModel) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -126,7 +132,7 @@ fun TodoItemList(item: ToDoEntity) {
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(5.dp), text = "date time",
+                    .padding(5.dp), text = item.date ?: "",
                 textAlign = TextAlign.End
             )
         }

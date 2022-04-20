@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amirhusseinsoori.data.db.model.ToDoEntity
 import com.amirhusseinsoori.data.repository.Repository
+import com.amirhusseinsoori.domain.entity.TodoModel
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ToDoViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    private val mutableStateFlow = MutableStateFlow<List<ToDoEntity>>(emptyList())
+    private val mutableStateFlow = MutableStateFlow<List<TodoModel>>(emptyList())
     val stateFlow = mutableStateFlow.asStateFlow()
 
     init {
@@ -32,15 +33,15 @@ class ToDoViewModel @Inject constructor(private val repository: Repository) : Vi
     }
 
 
-    fun insertTodoList(toDoEntity: ToDoEntity) {
+    fun insertTodoList(todoModel: TodoModel) {
         viewModelScope.launch {
-            repository.insertToDoList(toDoEntity)
+            repository.insertToDoList(todoModel)
         }
     }
 
-    fun deleteTodoList(toDoEntity: ToDoEntity) {
+    fun deleteTodoList(todoModel: TodoModel) {
         viewModelScope.launch {
-            repository.deleteToDoList(toDoEntity)
+            repository.deleteToDoList(todoModel)
         }
     }
 }

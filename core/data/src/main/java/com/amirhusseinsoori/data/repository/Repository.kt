@@ -1,19 +1,25 @@
 package com.amirhusseinsoori.data.repository
 
 import com.amirhusseinsoori.data.db.dao.ToDoDao
-import com.amirhusseinsoori.data.db.model.ToDoEntity
+import com.amirhusseinsoori.data.mapper.mapFlowListToDoModel
+import com.amirhusseinsoori.data.mapper.mapToDoEntity
+import com.amirhusseinsoori.domain.entity.TodoModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class Repository @Inject constructor(private val local: ToDoDao) {
 
-    fun getAllToDoList(): Flow<List<ToDoEntity>> = local.getListToDoList()
+    fun getAllToDoList(): Flow<List<TodoModel>> = local.getListToDoList().mapFlowListToDoModel()
 
-    suspend fun insertToDoList(toDoEntity: ToDoEntity) {
-        local.insertTodo(toDoEntity)
+    suspend fun insertToDoList(todoModel: TodoModel) {
+        local.insertTodo(
+            todoModel.mapToDoEntity()
+        )
     }
 
-    suspend fun deleteToDoList(toDoEntity: ToDoEntity) {
-        local.delete(toDoEntity)
+    suspend fun deleteToDoList(todoModel: TodoModel) {
+        local.delete(todoModel.mapToDoEntity())
     }
+
+
 }
