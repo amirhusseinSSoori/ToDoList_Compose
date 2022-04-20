@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="ToDoList_780_Compose.app" target="11" />
+      <module name="ToDoList_780_Compose.core.data" target="11" />
       <module name="ToDoList_780_Compose.data" target="11" />
     </bytecodeTargetLevel>
   </component>
