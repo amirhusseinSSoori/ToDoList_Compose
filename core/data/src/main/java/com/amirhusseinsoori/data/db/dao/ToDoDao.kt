@@ -6,16 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 
 @Dao
-interface ToDoDao {
+abstract class ToDoDao : BaseDao<ToDoEntity> {
     @Query("SELECT * FROM toDoEntity")
-    fun getListToDoList(): Flow<List<ToDoEntity>>
-
-
-    @Delete
-    suspend fun delete(toDoEntity: ToDoEntity)
-
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTodo(toDoEntity: ToDoEntity)
-
+    abstract fun getListToDoList(): Flow<List<ToDoEntity>>
 }

@@ -9,6 +9,6 @@ import javax.inject.Inject
 class InsertToDoRepositoryImp @Inject constructor(private val local: ToDoDao) :
     InsertToDoRepository {
     override suspend fun insertToDoList(todoModel: TodoModel) {
-        local.insertTodo(todoModel.mapToDoEntity())
+        local.insert(todoModel.mapToDoEntity())
     }
 }
