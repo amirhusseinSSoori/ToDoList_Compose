@@ -2,9 +2,11 @@ package com.amirhusseinsoori.todolist_780_compose.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amirhusseinsoori.data.db.model.ToDoEntity
-import com.amirhusseinsoori.data.repository.Repository
+import com.amirhusseinsoori.data.repository.GetAllToDoListRepositoryImp
 import com.amirhusseinsoori.domain.entity.TodoModel
+import com.amirhusseinsoori.domain.repository.DeleteToDoRepository
+import com.amirhusseinsoori.domain.repository.GetAllToDoListRepository
+import com.amirhusseinsoori.domain.repository.InsertToDoRepository
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +16,11 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ToDoViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class ToDoViewModel @Inject constructor(
+    private val getAllToDoListRepository: GetAllToDoListRepository,
+    private val deleteToDoRepository: DeleteToDoRepository,
+    private val insertToDoRepository: InsertToDoRepository
+) : ViewModel() {
 
     private val mutableStateFlow = MutableStateFlow<List<TodoModel>>(emptyList())
     val stateFlow = mutableStateFlow.asStateFlow()
@@ -26,7 +32,7 @@ class ToDoViewModel @Inject constructor(private val repository: Repository) : Vi
 
     private fun eventGetList() {
         viewModelScope.launch {
-            repository.getAllToDoList().collect() {
+            getAllToDoListRepository.getAllToDoList().collect() {
                 mutableStateFlow.value = it
             }
         }
@@ -35,13 +41,13 @@ class ToDoViewModel @Inject constructor(private val repository: Repository) : Vi
 
     fun insertTodoList(todoModel: TodoModel) {
         viewModelScope.launch {
-            repository.insertToDoList(todoModel)
+            insertToDoRepository.insertToDoList(todoModel)
         }
     }
 
     fun deleteTodoList(todoModel: TodoModel) {
         viewModelScope.launch {
-            repository.deleteToDoList(todoModel)
+            deleteToDoRepository.deleteToDoList(todoModel)
         }
     }
 }
