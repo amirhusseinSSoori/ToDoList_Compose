@@ -26,7 +26,7 @@ fun InitialNavGraph(navController: NavHostController, viewModel: ToDoViewModel) 
     AnimatedNavHost(navController = navController, startDestination = ScreenRoute.Intro.route) {
         addIntro(navController)
         addTodoList(navController, viewModel)
-        addDetails()
+        addDetails(viewModel)
 
     }
 }
@@ -131,10 +131,10 @@ fun NavGraphBuilder.addTodoList(
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.addDetails() {
+fun NavGraphBuilder.addDetails(viewModel: ToDoViewModel) {
     composable(
         ScreenRoute.AddDetails.route
     ) {
-        AddToListScreen()
+        AddToListScreen(viewModel)
     }
 }

@@ -33,14 +33,7 @@ fun TodoScreen(navController: NavController, viewModel: ToDoViewModel) {
     Column {
         Button(
             onClick = {
-                //navController.navigate(ScreenRoute.AddDetails.route)
-
-                viewModel.insertTodoList(
-                    todoModel = TodoModel(
-                        title = "sdfsdfsdf",
-                        description = "Asd,asdasdasd"
-                    )
-                )
+              navController.navigate("addDetails_screen")
             },
             modifier = Modifier
         ) {
