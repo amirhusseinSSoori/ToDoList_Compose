@@ -2,8 +2,9 @@ package com.amirhusseinsoori.todolist_780_compose.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amirhusseinsoori.todolist_780_compose.ui.data.db.model.ToDoEntity
-import com.amirhusseinsoori.todolist_780_compose.ui.data.repository.Repository
+import com.amirhusseinsoori.data.db.model.ToDoEntity
+import com.amirhusseinsoori.data.repository.Repository
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,7 +13,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ToDoViewModel  @Inject constructor(private val repository: Repository) : ViewModel() {
+class ToDoViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
     private val mutableStateFlow = MutableStateFlow<List<ToDoEntity>>(emptyList())
     val stateFlow = mutableStateFlow.asStateFlow()
@@ -31,13 +32,13 @@ class ToDoViewModel  @Inject constructor(private val repository: Repository) : V
     }
 
 
-     fun insertTodoList(toDoEntity: ToDoEntity){
+    fun insertTodoList(toDoEntity: ToDoEntity) {
         viewModelScope.launch {
             repository.insertToDoList(toDoEntity)
         }
     }
 
-     fun deleteTodoList(toDoEntity: ToDoEntity){
+    fun deleteTodoList(toDoEntity: ToDoEntity) {
         viewModelScope.launch {
             repository.deleteToDoList(toDoEntity)
         }

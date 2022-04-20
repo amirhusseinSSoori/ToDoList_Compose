@@ -1,10 +1,10 @@
-package com.amirhusseinsoori.todolist_780_compose.ui.data.db.dao
+package com.amirhusseinsoori.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.amirhusseinsoori.todolist_780_compose.ui.data.db.model.ToDoEntity
+import com.amirhusseinsoori.data.db.model.ToDoEntity
 import kotlinx.coroutines.flow.Flow
 
 

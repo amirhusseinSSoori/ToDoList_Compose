@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.ui.data.db.model
+package com.amirhusseinsoori.data.db.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

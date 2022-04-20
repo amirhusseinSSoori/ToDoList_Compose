@@ -1,9 +1,9 @@
-package com.amirhusseinsoori.todolist_780_compose.ui.data.di
+package com.amirhusseinsoori.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.amirhusseinsoori.todolist_780_compose.ui.data.db.MyDataBase.MyDataBase
-import com.amirhusseinsoori.todolist_780_compose.ui.data.db.dao.ToDoDao
+import com.amirhusseinsoori.data.db.MyDataBase
+import com.amirhusseinsoori.data.db.dao.ToDoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

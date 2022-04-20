@@ -1,9 +1,8 @@
-package com.amirhusseinsoori.todolist_780_compose.ui.data.repository
+package com.amirhusseinsoori.data.repository
 
-import com.amirhusseinsoori.todolist_780_compose.ui.data.db.dao.ToDoDao
-import com.amirhusseinsoori.todolist_780_compose.ui.data.db.model.ToDoEntity
+import com.amirhusseinsoori.data.db.dao.ToDoDao
+import com.amirhusseinsoori.data.db.model.ToDoEntity
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class Repository @Inject constructor(private val local: ToDoDao) {
