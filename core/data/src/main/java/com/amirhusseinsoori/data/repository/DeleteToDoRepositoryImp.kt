@@ -6,7 +6,8 @@ import com.amirhusseinsoori.domain.entity.TodoModel
 import com.amirhusseinsoori.domain.repository.DeleteToDoRepository
 import javax.inject.Inject
 
-class DeleteToDoRepositoryImp @Inject constructor(private val local: ToDoDao) :DeleteToDoRepository{
+class DeleteToDoRepositoryImp @Inject constructor(private val local: ToDoDao) :
+    DeleteToDoRepository {
     override suspend fun deleteToDoList(todoModel: TodoModel) {
         local.delete(todoModel.mapToDoEntity())
     }

@@ -16,7 +16,6 @@ import javax.inject.Singleton
 object LocalModule {
 
 
-
     @Singleton
     @Provides
     fun provideMyDb(

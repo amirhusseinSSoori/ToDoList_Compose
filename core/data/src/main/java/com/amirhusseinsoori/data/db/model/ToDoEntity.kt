@@ -2,9 +2,6 @@ package com.amirhusseinsoori.data.db.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.amirhusseinsoori.common.Constance.key
-import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 
 
@@ -16,4 +13,4 @@ data class ToDoEntity(
     val description: String? = null,
     val date: String? = Calendar.getInstance().time.toString(),
 
-)
+    )

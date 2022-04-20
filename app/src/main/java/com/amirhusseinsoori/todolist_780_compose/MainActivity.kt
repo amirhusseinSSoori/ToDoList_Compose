@@ -36,8 +36,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                   InitialNavGraph(navController, viewModel)
-                   // TodoScreen(viewModel)
+                    InitialNavGraph(navController, viewModel)
+                    // TodoScreen(viewModel)
                 }
             }
         }
