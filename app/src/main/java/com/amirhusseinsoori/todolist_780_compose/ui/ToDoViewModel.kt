@@ -9,6 +9,7 @@ import com.amirhusseinsoori.domain.repository.GetAllToDoListRepository
 import com.amirhusseinsoori.domain.repository.InsertToDoRepository
 import com.amirhusseinsoori.domain.useCase.DeleteToDoUseCase
 import com.amirhusseinsoori.domain.useCase.InsertToDoUseCase
+import com.amirhusseinsoori.domain.useCase.ShowAllToDoListUseCase
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ToDoViewModel @Inject constructor(
-    private val getAllToDoListRepository: GetAllToDoListRepository,
+    private val showAllToDoListUseCase: ShowAllToDoListUseCase,
     private val deleteToDoUseCase: DeleteToDoUseCase,
     private val insertToDoUseCase: InsertToDoUseCase
 ) : ViewModel() {
@@ -34,7 +35,7 @@ class ToDoViewModel @Inject constructor(
 
     private fun eventGetList() {
         viewModelScope.launch {
-            getAllToDoListRepository.getAllToDoList().collect() {
+            showAllToDoListUseCase.execute().collect() {
                 mutableStateFlow.value = it
             }
         }
