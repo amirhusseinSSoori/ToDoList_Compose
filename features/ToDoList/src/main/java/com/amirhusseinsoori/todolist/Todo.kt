@@ -1,11 +1,9 @@
-package com.amirhusseinsoori.todolist_780_compose.ui.screen.todo
+package com.amirhusseinsoori.todolist
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -23,12 +21,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.amirhusseinsoori.data.db.model.ToDoEntity
 import com.amirhusseinsoori.domain.entity.TodoModel
-import com.amirhusseinsoori.todolist_780_compose.ui.ToDoViewModel
-import com.amirhusseinsoori.todolist_780_compose.ui.navigation.ScreenRoute
 
-var a=1
+
 
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnrememberedMutableState")

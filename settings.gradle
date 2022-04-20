@@ -14,7 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ToDoList_780_Compose"
 include ':app'
-include  ':core'
+include ':core'
 include ':core:domain'
 include ':core:data'
 include ':common'
+include ':features:ToDoList'
+include ':features:AddToDo'

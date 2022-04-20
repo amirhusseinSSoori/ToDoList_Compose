@@ -1,16 +1,11 @@
-package com.amirhusseinsoori.todolist_780_compose.ui
+package com.amirhusseinsoori.todolist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amirhusseinsoori.data.repository.GetAllToDoListRepositoryImp
 import com.amirhusseinsoori.domain.entity.TodoModel
-import com.amirhusseinsoori.domain.repository.DeleteToDoRepository
-import com.amirhusseinsoori.domain.repository.GetAllToDoListRepository
-import com.amirhusseinsoori.domain.repository.InsertToDoRepository
 import com.amirhusseinsoori.domain.useCase.DeleteToDoUseCase
 import com.amirhusseinsoori.domain.useCase.InsertToDoUseCase
 import com.amirhusseinsoori.domain.useCase.ShowAllToDoListUseCase
-
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

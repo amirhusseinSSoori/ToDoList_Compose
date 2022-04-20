@@ -1,6 +1,5 @@
 package com.amirhusseinsoori.todolist_780_compose
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,9 +12,8 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.amirhusseinsoori.todolist_780_compose.ui.ToDoViewModel
+import com.amirhusseinsoori.todolist.ToDoViewModel
 import com.amirhusseinsoori.todolist_780_compose.ui.navigation.InitialNavGraph
-import com.amirhusseinsoori.todolist_780_compose.ui.screen.todo.TodoScreen
 import com.amirhusseinsoori.todolist_780_compose.ui.theme.ToDoList_780_ComposeTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
