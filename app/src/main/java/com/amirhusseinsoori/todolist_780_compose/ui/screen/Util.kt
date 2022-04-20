@@ -16,11 +16,6 @@ val utilFont = FontFamily(
     Font(R.font.montserrat_semibold, FontWeight.Bold)
 )
 
-class SaveIdScroll() {
-
-
-}
-
 fun Context.save(input: Int) {
     val save: SharedPreferences = this.getSharedPreferences("application", Context.MODE_PRIVATE)
     val editor: SharedPreferences.Editor = save.edit()
