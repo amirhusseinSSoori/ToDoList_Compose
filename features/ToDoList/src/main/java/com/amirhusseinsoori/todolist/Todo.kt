@@ -24,7 +24,6 @@ import androidx.navigation.NavController
 import com.amirhusseinsoori.domain.entity.TodoModel
 
 
-
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnrememberedMutableState")
 @Composable
@@ -38,7 +37,7 @@ fun TodoScreen(navController: NavController, viewModel: ToDoViewModel) {
 
                 viewModel.insertTodoList(
                     todoModel = TodoModel(
-                        title="sdfsdfsdf",
+                        title = "sdfsdfsdf",
                         description = "Asd,asdasdasd"
                     )
                 )
@@ -52,13 +51,16 @@ fun TodoScreen(navController: NavController, viewModel: ToDoViewModel) {
                 val dismissState = rememberDismissState()
                 if (dismissState.isDismissed(DismissDirection.EndToStart)) {
                     viewModel.deleteTodoList(item)
+                } else if (dismissState.isDismissed(DismissDirection.StartToEnd)) {
+                    viewModel.deleteTodoList(item)
                 }
                 SwipeToDismiss(
                     state = dismissState,
                     modifier = Modifier
                         .padding(vertical = Dp(1f)),
                     directions = setOf(
-                        DismissDirection.EndToStart
+                        DismissDirection.EndToStart,
+                        DismissDirection.StartToEnd
                     ),
                     dismissThresholds = { direction ->
                         FractionalThreshold(if (direction == DismissDirection.EndToStart) 0.1f else 0.05f)
