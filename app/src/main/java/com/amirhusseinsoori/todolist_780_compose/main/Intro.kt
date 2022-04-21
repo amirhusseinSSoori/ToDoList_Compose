@@ -23,7 +23,6 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.amirhusseinsoori.common.ScreenRoute
 import com.amirhusseinsoori.todolist_780_compose.R
-import com.amirhusseinsoori.todolist_780_compose.main.screen.utilFont
 import com.amirhusseinsoori.todolist_780_compose.main.theme.black
 import com.amirhusseinsoori.todolist_780_compose.main.theme.white
 import kotlinx.coroutines.delay

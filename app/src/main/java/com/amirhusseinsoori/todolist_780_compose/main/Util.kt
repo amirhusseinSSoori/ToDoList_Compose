@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.main.screen
+package com.amirhusseinsoori.todolist_780_compose.main
 
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily

@@ -3,6 +3,7 @@ package com.amirhusseinsoori.todolist.component
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -17,7 +18,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.amirhusseinsoori.common.ScreenRoute
 import com.amirhusseinsoori.domain.entity.TodoModel
+import com.google.gson.Gson
 
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -79,11 +83,14 @@ fun SwipeToDeleteItems(
 
 
 @Composable
-fun TodoItemList(item: TodoModel) {
+fun TodoItemList(item: TodoModel, navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(3.dp),
+            .padding(3.dp)
+            .clickable {
+                navController.navigate("${ScreenRoute.ShowToDo.route}/${Gson().toJson(item)}")
+            },
         elevation = 8.dp
     ) {
         Column(modifier = Modifier) {

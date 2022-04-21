@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.amirhusseinsoori.todolist.ToDoViewModel
-import com.amirhusseinsoori.todolist_780_compose.main.navigation.InitialNavGraph
+import com.amirhusseinsoori.todolist_780_compose.main.InitialNavGraph
 import com.amirhusseinsoori.todolist_780_compose.main.theme.ToDoList_780_ComposeTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
