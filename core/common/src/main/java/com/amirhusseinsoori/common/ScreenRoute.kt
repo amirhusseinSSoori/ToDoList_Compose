@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.ui.navigation
+package com.amirhusseinsoori.common
 
 sealed class ScreenRoute(val route: String) {
     object Intro : ScreenRoute("intro_screen")

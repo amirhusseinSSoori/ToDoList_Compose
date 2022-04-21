@@ -21,8 +21,8 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.amirhusseinsoori.common.ScreenRoute
 import com.amirhusseinsoori.todolist_780_compose.R
-import com.amirhusseinsoori.todolist_780_compose.ui.navigation.ScreenRoute
 import com.amirhusseinsoori.todolist_780_compose.ui.screen.utilFont
 import com.amirhusseinsoori.todolist_780_compose.ui.theme.black
 import com.amirhusseinsoori.todolist_780_compose.ui.theme.white

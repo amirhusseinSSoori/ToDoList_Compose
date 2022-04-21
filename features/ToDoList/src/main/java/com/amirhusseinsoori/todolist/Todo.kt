@@ -20,7 +20,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.amirhusseinsoori.common.ScreenRoute
 import com.amirhusseinsoori.domain.entity.TodoModel
 
 
@@ -29,11 +31,10 @@ import com.amirhusseinsoori.domain.entity.TodoModel
 @Composable
 fun TodoScreen(navController: NavController, viewModel: ToDoViewModel) {
     val list = viewModel.stateFlow.collectAsState()
-
     Column {
         Button(
             onClick = {
-                navController.navigate("addDetails_screen")
+                navController.navigate(ScreenRoute.AddDetails.route)
             },
             modifier = Modifier
         ) {
@@ -47,7 +48,6 @@ fun TodoScreen(navController: NavController, viewModel: ToDoViewModel) {
                     showItems = {
                         TodoItemList(item = item)
                     })
-                Divider(Modifier.fillMaxWidth(), Color.DarkGray)
             }
         }
     }
@@ -116,7 +116,7 @@ fun TodoItemList(item: TodoModel) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(15.dp),
+            .padding(3.dp),
         elevation = 8.dp
     ) {
         Column(modifier = Modifier) {
@@ -124,13 +124,14 @@ fun TodoItemList(item: TodoModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(5.dp),
-                text = "title : ".plus(item.title),
-                textAlign = TextAlign.Start
+                text = item.title ?: "",
+                textAlign = TextAlign.Center,
+                color = red
             )
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(110.dp)
+                    .height(30.dp)
                     .padding(5.dp),
                 text = "description : ".plus(item.description),
             )
@@ -138,7 +139,8 @@ fun TodoItemList(item: TodoModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(5.dp), text = item.date ?: "",
-                textAlign = TextAlign.End
+                textAlign = TextAlign.End,
+                fontSize = 9.sp
             )
         }
     }
