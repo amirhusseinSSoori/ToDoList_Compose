@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.ui.screen.intro
+package com.amirhusseinsoori.todolist_780_compose.main
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
@@ -23,9 +23,9 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.amirhusseinsoori.common.ScreenRoute
 import com.amirhusseinsoori.todolist_780_compose.R
-import com.amirhusseinsoori.todolist_780_compose.ui.screen.utilFont
-import com.amirhusseinsoori.todolist_780_compose.ui.theme.black
-import com.amirhusseinsoori.todolist_780_compose.ui.theme.white
+import com.amirhusseinsoori.todolist_780_compose.main.screen.utilFont
+import com.amirhusseinsoori.todolist_780_compose.main.theme.black
+import com.amirhusseinsoori.todolist_780_compose.main.theme.white
 import kotlinx.coroutines.delay
 
 
@@ -67,7 +67,6 @@ fun Intro(navController: NavController) {
 
 @Composable
 fun Loader(anim: Int) {
-
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(anim))
     val progress by animateLottieCompositionAsState(composition)
     Column(

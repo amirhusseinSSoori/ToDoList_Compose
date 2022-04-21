@@ -16,8 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ToDoViewModel @Inject constructor(
     private val showAllToDoListUseCase: ShowAllToDoListUseCase,
-    private val deleteToDoUseCase: DeleteToDoUseCase,
-    private val insertToDoUseCase: InsertToDoUseCase
+    private val deleteToDoUseCase: DeleteToDoUseCase
 ) : ViewModel() {
 
     private val mutableStateFlow = MutableStateFlow<List<TodoModel>>(emptyList())
@@ -37,11 +36,7 @@ class ToDoViewModel @Inject constructor(
     }
 
 
-    fun insertTodoList(todoModel: TodoModel) {
-        viewModelScope.launch {
-            insertToDoUseCase.execute(todoModel)
-        }
-    }
+
 
     fun deleteTodoList(todoModel: TodoModel) {
         viewModelScope.launch {

@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.ui.navigation
+package com.amirhusseinsoori.todolist_780_compose.main.navigation
 
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -12,8 +12,8 @@ import androidx.navigation.NavHostController
 import com.amirhusseinsoori.common.ScreenRoute
 import com.amirhusseinsoori.todolist.ToDoViewModel
 import com.amirhusseinsoori.todolist.TodoScreen
-import com.amirhusseinsoori.todolist_780_compose.ui.screen.addTodo.AddToListScreen
-import com.amirhusseinsoori.todolist_780_compose.ui.screen.intro.Intro
+import com.amirhusseinsoori.addtodo.AddToListScreen
+import com.amirhusseinsoori.todolist_780_compose.main.Intro
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 
@@ -27,7 +27,7 @@ fun InitialNavGraph(navController: NavHostController, viewModel: ToDoViewModel) 
     AnimatedNavHost(navController = navController, startDestination = ScreenRoute.Intro.route) {
         addIntro(navController)
         addTodoList(navController, viewModel)
-        addDetails(viewModel)
+        addDetails(navController)
 
     }
 }
@@ -132,10 +132,12 @@ fun NavGraphBuilder.addTodoList(
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.addDetails(viewModel: ToDoViewModel) {
+fun NavGraphBuilder.addDetails(
+    navController: NavController
+) {
     composable(
         ScreenRoute.AddDetails.route
     ) {
-        AddToListScreen(viewModel)
+        AddToListScreen(navController)
     }
 }
