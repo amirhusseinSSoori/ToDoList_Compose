@@ -33,7 +33,7 @@ fun TodoScreen(navController: NavController, viewModel: ToDoViewModel) {
     Column {
         Button(
             onClick = {
-              navController.navigate("addDetails_screen")
+                navController.navigate("addDetails_screen")
             },
             modifier = Modifier
         ) {
@@ -41,58 +41,73 @@ fun TodoScreen(navController: NavController, viewModel: ToDoViewModel) {
         }
         LazyColumn {
             items(list.value, { todo: TodoModel -> todo.id!! }) { item ->
-                val dismissState = rememberDismissState()
-                if (dismissState.isDismissed(DismissDirection.EndToStart)) {
-                    viewModel.deleteTodoList(item)
-                } else if (dismissState.isDismissed(DismissDirection.StartToEnd)) {
-                    viewModel.deleteTodoList(item)
-                }
-                SwipeToDismiss(
-                    state = dismissState,
-                    modifier = Modifier
-                        .padding(vertical = Dp(1f)),
-                    directions = setOf(
-                        DismissDirection.EndToStart,
-                        DismissDirection.StartToEnd
-                    ),
-                    dismissThresholds = { direction ->
-                        FractionalThreshold(if (direction == DismissDirection.EndToStart) 0.1f else 0.05f)
-                    },
-                    background = {
-                        val color by animateColorAsState(
-                            when (dismissState.targetValue) {
-                                DismissValue.Default -> Color.White
-                                else -> Color.Red
-                            }
-                        )
-                        val alignment = Alignment.CenterEnd
-                        val icon = Icons.Default.Delete
-                        val scale by animateFloatAsState(
-                            if (dismissState.targetValue == DismissValue.Default) 0.75f else 1f
-                        )
-
-                        Box(
-                            Modifier
-                                .fillMaxSize()
-                                .background(color)
-                                .padding(horizontal = Dp(20f)),
-                            contentAlignment = alignment
-                        ) {
-                            Icon(
-                                icon,
-                                contentDescription = "Delete Icon",
-                                modifier = Modifier.scale(scale)
-                            )
-                        }
-                    },
-                    dismissContent = {
+                SwipeToDeleteItems(
+                    endToStart = { viewModel.deleteTodoList(item) },
+                    startToEnd = { viewModel.deleteTodoList(item) },
+                    showItems = {
                         TodoItemList(item = item)
-                    }
-                )
+                    })
                 Divider(Modifier.fillMaxWidth(), Color.DarkGray)
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun SwipeToDeleteItems(
+    endToStart: () -> Unit,
+    startToEnd: () -> Unit,
+    showItems: @Composable () -> Unit
+) {
+    val dismissState = rememberDismissState()
+    if (dismissState.isDismissed(DismissDirection.EndToStart)) {
+        endToStart()
+    } else if (dismissState.isDismissed(DismissDirection.StartToEnd)) {
+        startToEnd()
+    }
+    SwipeToDismiss(
+        state = dismissState,
+        modifier = Modifier
+            .padding(vertical = Dp(1f)),
+        directions = setOf(
+            DismissDirection.EndToStart,
+            DismissDirection.StartToEnd
+        ),
+        dismissThresholds = { direction ->
+            FractionalThreshold(if (direction == DismissDirection.EndToStart) 0.1f else 0.05f)
+        },
+        background = {
+            val color by animateColorAsState(
+                when (dismissState.targetValue) {
+                    DismissValue.Default -> Color.White
+                    else -> Color.Red
+                }
+            )
+            val alignment = Alignment.CenterEnd
+            val icon = Icons.Default.Delete
+            val scale by animateFloatAsState(
+                if (dismissState.targetValue == DismissValue.Default) 0.75f else 1f
+            )
+
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(color)
+                    .padding(horizontal = Dp(20f)),
+                contentAlignment = alignment
+            ) {
+                Icon(
+                    icon,
+                    contentDescription = "Delete Icon",
+                    modifier = Modifier.scale(scale)
+                )
+            }
+        },
+        dismissContent = {
+            showItems()
+        }
+    )
 }
 
 
@@ -117,7 +132,7 @@ fun TodoItemList(item: TodoModel) {
                     .fillMaxWidth()
                     .height(110.dp)
                     .padding(5.dp),
-                text = "description : ",
+                text = "description : ".plus(item.description),
             )
             Text(
                 modifier = Modifier
