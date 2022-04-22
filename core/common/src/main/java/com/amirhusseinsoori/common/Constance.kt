@@ -1,5 +1,6 @@
 package com.amirhusseinsoori.common
 
 object Constance {
-    var key:Int=0
+    const val title_description_not_empty="please input title and description"
+    const val DbName="ToDoDb"
 }

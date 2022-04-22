@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class ToDoDao : BaseDao<ToDoEntity> {
-    @Query("SELECT * FROM toDoEntity")
+    @Query("SELECT * FROM toDoEntity  ORDER BY title DESC")
     abstract fun getListToDoList(): Flow<List<ToDoEntity>>
 }

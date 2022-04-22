@@ -10,9 +10,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.amirhusseinsoori.common.Constance.title_description_not_empty
 import com.amirhusseinsoori.domain.entity.TodoModel
 
 
@@ -21,8 +23,7 @@ fun AddToListScreen(
     navController: NavController,
     context: Context = LocalContext.current,
     viewModel: AddToDoViewModel = hiltViewModel(),
-
-    ) {
+) {
     viewModel.apply {
         Card(
             modifier = Modifier
@@ -41,7 +42,7 @@ fun AddToListScreen(
                         if (it.length <= 30) title = it
                     },
                     singleLine = true,
-                    label = { Text("title") },
+                    label = { Text(stringResource(id = R.string.title)) },
                     colors = TextFieldDefaults.textFieldColors(
                         textColor = Color.Gray,
                         disabledTextColor = Color.Transparent,
@@ -67,7 +68,7 @@ fun AddToListScreen(
                     onValueChange = {
                         des = it
                     },
-                    label = { Text("Description") },
+                    label = { Text(stringResource(id = R.string.description)) },
                     colors = TextFieldDefaults.textFieldColors(
                         textColor = Color.Gray,
                         disabledTextColor = Color.Transparent,
@@ -79,7 +80,7 @@ fun AddToListScreen(
 
                 Button(onClick = {
                     if (title.isNullOrEmpty() || des.isNullOrEmpty()) {
-                        Toast.makeText(context, "Please input title and description", Toast.LENGTH_SHORT)
+                        Toast.makeText(context, title_description_not_empty, Toast.LENGTH_SHORT)
                             .show()
                     } else {
                         insertTodoList(
@@ -92,7 +93,7 @@ fun AddToListScreen(
 
                     }
                 }) {
-                    Text(text = "Save")
+                    Text(text = stringResource(id = R.string.save))
                 }
             }
         }

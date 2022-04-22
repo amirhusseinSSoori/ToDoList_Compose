@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.amirhusseinsoori.common.ScreenRoute
 import com.amirhusseinsoori.domain.entity.TodoModel
+import com.amirhusseinsoori.todolist.R
 import com.google.gson.Gson
 
 
@@ -110,7 +112,7 @@ fun TodoItemList(item: TodoModel, navController: NavController) {
                     .padding(5.dp),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                text = "description : ".plus(item.description),
+                text = stringResource(id = R.string.description).plus(item.description),
             )
             Text(
                 modifier = Modifier

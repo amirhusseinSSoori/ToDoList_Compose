@@ -2,6 +2,7 @@ package com.amirhusseinsoori.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.amirhusseinsoori.common.Constance.DbName
 import com.amirhusseinsoori.data.db.MyDataBase
 import com.amirhusseinsoori.data.db.dao.ToDoDao
 import dagger.Module
@@ -28,7 +29,7 @@ object LocalModule {
             .databaseBuilder(
                 context,
                 MyDataBase::class.java,
-                "DbName"
+                DbName
             )
            .fallbackToDestructiveMigration()
             .addCallback(callback)
