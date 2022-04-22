@@ -9,6 +9,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -19,7 +22,7 @@ object LocalModule {
     @Singleton
     @Provides
     fun provideMyDb(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,callback:MyDataBase.Callback
     ): MyDataBase {
         return Room
             .databaseBuilder(
@@ -27,7 +30,8 @@ object LocalModule {
                 MyDataBase::class.java,
                 "DbName"
             )
-            .fallbackToDestructiveMigration()
+           .fallbackToDestructiveMigration()
+            .addCallback(callback)
             .build()
     }
 
@@ -36,4 +40,13 @@ object LocalModule {
     fun provideToDoListDAO(myDataBase: MyDataBase): ToDoDao {
         return myDataBase.toDoListDao()
     }
+
+    @ApplicationScope
+    @Provides
+    @Singleton
+    fun provideApplicationScope() = CoroutineScope(SupervisorJob())
 }
+
+@Retention(AnnotationRetention.RUNTIME)
+@Qualifier
+annotation class ApplicationScope
