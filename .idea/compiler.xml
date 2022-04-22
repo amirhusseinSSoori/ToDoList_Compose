@@ -5,6 +5,7 @@
       <module name="ToDoList_780_Compose.AddToDo" target="11" />
       <module name="ToDoList_780_Compose.app" target="11" />
       <module name="ToDoList_780_Compose.core.data" target="11" />
+      <module name="ToDoList_780_Compose.core.domain" target="1.8" />
       <module name="ToDoList_780_Compose.data" target="11" />
       <module name="ToDoList_780_Compose.features.AddToDo" target="11" />
       <module name="ToDoList_780_Compose.features.base" target="11" />
