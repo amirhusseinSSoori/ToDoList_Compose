@@ -1,14 +1,12 @@
 package com.amirhusseinsoori.todolist
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+
 import com.amirhusseinsoori.domain.entity.TodoModel
 import com.amirhusseinsoori.domain.useCase.DeleteToDoUseCase
-import com.amirhusseinsoori.domain.useCase.InsertToDoUseCase
 import com.amirhusseinsoori.domain.useCase.ShowAllToDoListUseCase
+import com.amirhusseinsoori.todolist.component.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,30 +15,38 @@ import javax.inject.Inject
 class ToDoViewModel @Inject constructor(
     private val showAllToDoListUseCase: ShowAllToDoListUseCase,
     private val deleteToDoUseCase: DeleteToDoUseCase
-) : ViewModel() {
-
-    private val mutableStateFlow = MutableStateFlow<List<TodoModel>>(emptyList())
-    val stateFlow = mutableStateFlow.asStateFlow()
+) : BaseViewModel<TodoEvent, TodoState>() {
 
     init {
-        eventGetList()
+        handleEvent(TodoEvent.ShowAllToDoList)
     }
 
+    override fun createInitialState(): TodoState = TodoState()
 
-    private fun eventGetList() {
-        viewModelScope.launch {
-            showAllToDoListUseCase.execute().collect() {
-                mutableStateFlow.value = it
+    override fun handleEvent(handleEvent: TodoEvent) {
+        when (handleEvent) {
+            is TodoEvent.DeleteItemToDo -> {
+                deleteTodoList(handleEvent.todoModel)
+            }
+            TodoEvent.ShowAllToDoList -> {
+                getAllList()
             }
         }
     }
 
+    private fun getAllList() {
+        viewModelScope.launch {
+            showAllToDoListUseCase.execute().collect() { list ->
+                state.value = TodoState(tooDoList = list)
+            }
+        }
+    }
 
-
-
-    fun deleteTodoList(todoModel: TodoModel) {
+    private fun deleteTodoList(todoModel: TodoModel) {
         viewModelScope.launch {
             deleteToDoUseCase.execute(todoModel)
         }
     }
+
+
 }
