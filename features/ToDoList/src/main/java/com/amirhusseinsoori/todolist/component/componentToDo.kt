@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -107,6 +108,8 @@ fun TodoItemList(item: TodoModel, navController: NavController) {
                     .fillMaxWidth()
                     .height(30.dp)
                     .padding(5.dp),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
                 text = "description : ".plus(item.description),
             )
             Text(

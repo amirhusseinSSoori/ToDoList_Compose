@@ -1,0 +1,42 @@
+//ext.commonConfig = {
+//    compileSdkVersion compile_sdk
+//
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget = JavaVersion.VERSION_1_8.toString()
+//    }
+//
+//
+//    packagingOptions {
+//        resources {
+//            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+//        }
+//    }
+//}
+ext.toDoList = {
+    implementation project(path: ':features:ToDoList')
+}
+ext.addToDo = {
+    implementation project(path: ':features:AddToDo')
+}
+
+ext.showToDo = {
+    implementation project(path: ':features:ShowToDo')
+}
+
+
+ext.domain = {
+    implementation project(path: ':core:domain')
+}
+ext.common = {
+    implementation project(path: ':core:common')
+}
+ext.data = {
+    implementation project(path: ':core:data')
+}
+
+
