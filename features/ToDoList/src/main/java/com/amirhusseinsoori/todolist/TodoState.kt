@@ -6,4 +6,4 @@ import com.amirhusseinsoori.todolist.component.base.State
 
 data class TodoState(
     val tooDoList: List<TodoModel> = emptyList()
-): State
+) : State

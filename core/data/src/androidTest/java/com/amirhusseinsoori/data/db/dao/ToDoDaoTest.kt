@@ -1,6 +1,5 @@
 package com.amirhusseinsoori.data.db.dao
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.amirhusseinsoori.data.db.DBHelper
 import com.amirhusseinsoori.data.db.MyDataBase
@@ -11,7 +10,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 

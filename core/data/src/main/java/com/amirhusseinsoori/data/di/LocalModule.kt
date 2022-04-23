@@ -23,7 +23,7 @@ object LocalModule {
     @Singleton
     @Provides
     fun provideMyDb(
-        @ApplicationContext context: Context,callback:MyDataBase.Callback
+        @ApplicationContext context: Context, callback: MyDataBase.Callback
     ): MyDataBase {
         return Room
             .databaseBuilder(
@@ -31,7 +31,7 @@ object LocalModule {
                 MyDataBase::class.java,
                 DbName
             )
-           .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration()
             .addCallback(callback)
             .build()
     }

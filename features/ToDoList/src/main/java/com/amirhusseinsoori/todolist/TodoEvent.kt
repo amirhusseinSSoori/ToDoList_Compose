@@ -1,7 +1,6 @@
 package com.amirhusseinsoori.todolist
 
 
-
 import com.amirhusseinsoori.domain.entity.TodoModel
 import com.amirhusseinsoori.todolist.component.base.Event
 

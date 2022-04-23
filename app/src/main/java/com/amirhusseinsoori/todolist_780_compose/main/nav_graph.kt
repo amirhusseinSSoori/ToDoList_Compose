@@ -6,14 +6,12 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.*
+import com.amirhusseinsoori.addtodo.AddToListScreen
 import com.amirhusseinsoori.common.ScreenRoute
+import com.amirhusseinsoori.showtodo.ShowToDoScreen
 import com.amirhusseinsoori.todolist.ToDoViewModel
 import com.amirhusseinsoori.todolist.TodoScreen
-import com.amirhusseinsoori.addtodo.AddToListScreen
-import com.amirhusseinsoori.showtodo.ShowToDoScreen
-import com.amirhusseinsoori.showtodo.ShowToDoViewModel
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 
