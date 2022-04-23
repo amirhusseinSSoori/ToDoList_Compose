@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -94,9 +95,13 @@ fun TodoItemList(item: TodoModel, navController: NavController) {
             .clickable {
                 navController.navigate("${ScreenRoute.ShowToDo.route}/${Gson().toJson(item)}")
             },
+        shape = RoundedCornerShape(30.dp),
         elevation = 8.dp
     ) {
-        Column(modifier = Modifier) {
+        Column(
+            modifier = Modifier.height(80.dp), verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -104,22 +109,6 @@ fun TodoItemList(item: TodoModel, navController: NavController) {
                 text = item.title ?: "",
                 textAlign = TextAlign.Center,
                 color = red
-            )
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(30.dp)
-                    .padding(5.dp),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                text = stringResource(id = R.string.description).plus(item.description),
-            )
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(5.dp), text = item.date ?: "",
-                textAlign = TextAlign.End,
-                fontSize = 9.sp
             )
         }
     }
