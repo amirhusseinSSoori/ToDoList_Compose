@@ -63,6 +63,7 @@ dependencies {
     implementation compose_mian.values()
     implementation compose_util.activity
     implementation compose_util.navigation_hilt
+    implementation compose_util.constraintlayout
     androidTestImplementation compose_util.ui_test
     debugImplementation compose_util.ui_tooling
 
@@ -76,6 +77,5 @@ dependencies {
     // util
     implementation util.gson
 
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
-    implementation 'com.google.code.gson:gson:2.8.8'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.1.1"
 }
