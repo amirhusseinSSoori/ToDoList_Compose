@@ -27,10 +27,9 @@ ext.compose_accompanist = [
         navigtion: "com.google.accompanist:accompanist-navigation-animation:$compose_accompanist"
 ]
 
-ext.room = [
-        runtime : "androidx.room:room-runtime:$room_version",
-        ktx     : "androidx.room:room-ktx:$room_version",
-        compiler: "androidx.room:room-compiler:$room_version"
+ext.sqldelight = [
+        driver : "com.squareup.sqldelight:android-driver:$sqlDelightVersion",
+        coroutines: "com.squareup.sqldelight:coroutines-extensions-jvm:$sqlDelightVersion"
 ]
 
 ext.coroutine = [

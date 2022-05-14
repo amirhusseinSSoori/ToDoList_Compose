@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose
+package com.amirhusseinsoori.todolist_sqldelight_compose
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -11,8 +11,8 @@ import com.amirhusseinsoori.showtodo.ShowToDoScreen
 import com.amirhusseinsoori.showtodo.ShowToDoViewModel
 import com.amirhusseinsoori.todolist.ToDoViewModel
 import com.amirhusseinsoori.todolist.TodoScreen
-import com.amirhusseinsoori.todolist_780_compose.main.InitialNavGraph
-import com.amirhusseinsoori.todolist_780_compose.main.theme.ToDoList_780_ComposeTheme
+import com.amirhusseinsoori.todolist_sqldelight_compose.main.InitialNavGraph
+import com.amirhusseinsoori.todolist_sqldelight_compose.main.theme.ToDoList_780_ComposeTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

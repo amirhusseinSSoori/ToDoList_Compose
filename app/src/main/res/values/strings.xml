@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">ToDoList_780_Compose</string>
+    <string name="app_name">ToDoList With sqldelight</string>
     <string name="intro">Todo List</string>
 </resources>

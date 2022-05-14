@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.main
+package com.amirhusseinsoori.todolist_sqldelight_compose.main
 
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalAnimationApi

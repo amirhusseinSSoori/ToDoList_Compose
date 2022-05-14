@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.main
+package com.amirhusseinsoori.todolist_sqldelight_compose.main
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
@@ -22,10 +22,10 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.amirhusseinsoori.common.ScreenRoute
-import com.amirhusseinsoori.todolist_780_compose.R
-import com.amirhusseinsoori.todolist_780_compose.main.theme.black
-import com.amirhusseinsoori.todolist_780_compose.main.theme.white
+import com.amirhusseinsoori.todolist_sqldelight_compose.main.theme.black
+import com.amirhusseinsoori.todolist_sqldelight_compose.main.theme.white
 import kotlinx.coroutines.delay
+import com.amirhusseinsoori.todolist_sqldelight_compose.R
 
 
 @Composable

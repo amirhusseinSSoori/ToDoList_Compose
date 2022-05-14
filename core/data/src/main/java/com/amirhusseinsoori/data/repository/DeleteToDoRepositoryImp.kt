@@ -1,14 +1,20 @@
 package com.amirhusseinsoori.data.repository
 
-import com.amirhusseinsoori.data.db.dao.ToDoDao
-import com.amirhusseinsoori.data.mapper.mapToDoEntity
+import com.amirhusseinsoori.data.ToDoEntityQueries
 import com.amirhusseinsoori.domain.entity.TodoModel
 import com.amirhusseinsoori.domain.repository.DeleteToDoRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class DeleteToDoRepositoryImp @Inject constructor(private val local: ToDoDao) :
+class DeleteToDoRepositoryImp @Inject constructor(private val toDoEntityQueries: ToDoEntityQueries) :
     DeleteToDoRepository {
     override suspend fun deleteToDoList(todoModel: TodoModel) {
-        local.delete(todoModel.mapToDoEntity())
+        todoModel.run {
+            withContext(Dispatchers.IO) {
+                toDoEntityQueries
+                    .deleteById(todoModel.id?:0)
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose
+package com.amirhusseinsoori.todolist_sqldelight_compose
 
 import android.app.Application
 import android.content.Context

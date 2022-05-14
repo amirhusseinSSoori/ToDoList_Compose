@@ -1,15 +1,24 @@
 package com.amirhusseinsoori.data.mapper
 
-import com.amirhusseinsoori.data.db.model.ToDoEntity
+import com.amirhusseinsoori.data.ToDoEntity
 import com.amirhusseinsoori.domain.entity.TodoModel
+import com.squareup.sqldelight.Query
+import com.squareup.sqldelight.runtime.coroutines.asFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-fun Flow<List<ToDoEntity>>.mapFlowListToDoModel(): Flow<List<TodoModel>> {
-    return map {
+
+
+
+fun Query<ToDoEntity>.mapFlowListToToDoModel(): Flow<List<TodoModel>> {
+    return this.asFlow().map { todo->
+        todo.executeAsList()
+    }.map {
         it.mapListToDoModel()
     }
 }
+
+
 
 fun List<ToDoEntity>.mapListToDoModel(): List<TodoModel> {
     return map { it.mapToDoModel() }
@@ -25,12 +34,4 @@ fun ToDoEntity.mapToDoModel(): TodoModel {
 
 }
 
-fun TodoModel.mapToDoEntity(): ToDoEntity {
-    return ToDoEntity(
-        id = id,
-        title = title ?: "",
-        description = description ?: "",
-        date = date ?: ""
-    )
 
-}

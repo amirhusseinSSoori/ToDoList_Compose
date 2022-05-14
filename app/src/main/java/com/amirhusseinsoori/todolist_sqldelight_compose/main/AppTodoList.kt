@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.main
+package com.amirhusseinsoori.todolist_sqldelight_compose.main
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

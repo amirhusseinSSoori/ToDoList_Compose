@@ -15,8 +15,12 @@ ext {
     androidx_version = "1.4.0"
 
 
-    //room
-    room_version = "2.4.2"
+    //sqldelight
+
+    sqldelight_version = "1.5.3"
+
+
+
 
 
     //util

@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose.main.theme
+package com.amirhusseinsoori.todolist_sqldelight_compose.main.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

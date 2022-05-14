@@ -1,4 +1,4 @@
-package com.amirhusseinsoori.todolist_780_compose
+package com.amirhusseinsoori.todolist_sqldelight_compose
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.amirhusseinsoori.todolist_780_compose", appContext.packageName)
+        assertEquals("com.amirhusseinsoori.data", appContext.packageName)
     }
 }

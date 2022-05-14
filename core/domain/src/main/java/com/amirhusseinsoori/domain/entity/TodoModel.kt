@@ -4,7 +4,7 @@ import java.util.*
 
 
 data class TodoModel(
-    val id: Int? = null,
+    val id: Long? = null,
     val title: String? = null,
     val description: String? = null,
     val date: String? = Calendar.getInstance().time.toString()

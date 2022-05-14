@@ -1,10 +1,10 @@
-package com.amirhusseinsoori.todolist_780_compose.main
+package com.amirhusseinsoori.todolist_sqldelight_compose.main
 
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import com.amirhusseinsoori.todolist_780_compose.R
+import com.amirhusseinsoori.todolist_sqldelight_compose.R
 
 val utilFont = FontFamily(
     Font(R.font.domine_bold, FontWeight.Light),

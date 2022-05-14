@@ -1,5 +1,6 @@
 package com.amirhusseinsoori.todolist
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 
 import com.amirhusseinsoori.domain.entity.TodoModel
@@ -38,6 +39,7 @@ class ToDoViewModel @Inject constructor(
         viewModelScope.launch {
             showAllToDoListUseCase.execute().collect() { list ->
                 state.value = TodoState(tooDoList = list)
+                Log.e("getAllList", "getAllList: $list ", )
             }
         }
     }
